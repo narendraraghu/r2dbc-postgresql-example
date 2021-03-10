@@ -17,9 +17,7 @@ public class UserService {
     this.userRepository = userRepository;
   }
 
-  public Mono<User> createUser(User user) {
-    return userRepository.save(user);
-  }
+  public Mono<User> createUser(User user) {return userRepository.save(user);  }
 
   public Flux<User> getUsers() {
     return userRepository.findAll();

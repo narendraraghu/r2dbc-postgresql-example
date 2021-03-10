@@ -11,6 +11,8 @@ import static reactor.core.publisher.Mono.from;
 import com.nbenja.spring.r2dbcpostgresqlexample.domain.User;
 import com.nbenja.spring.r2dbcpostgresqlexample.service.UserService;
 import javax.jws.soap.SOAPBinding.Use;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.server.ServerRequest;
 import org.springframework.web.reactive.function.server.ServerResponse;
@@ -20,11 +22,8 @@ import reactor.core.publisher.Mono;
 @Component
 public class UserHandler {
 
-  private UserService userService;
-
-  public UserHandler(UserService userService) {
-    this.userService = userService;
-  }
+  @Autowired
+  UserService userService;
 
   public Mono<ServerResponse> createUser(ServerRequest serverRequest) {
     return serverRequest.bodyToMono(User.class)

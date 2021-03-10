@@ -55,7 +55,8 @@ public class R2dbcPostgresqlConfiguration extends AbstractR2dbcConfiguration {
                   .rowsUpdated()
                   .block()
           );
-      userRepository.save(new User(1, "test")).log().subscribe();
+      userRepository.save(new User(11, "test")).log().subscribe();
+      userRepository.save(new User(12,"narendra")).log().single();
       userRepository.findAll().log().subscribe(System.out::println);
     };
   }
